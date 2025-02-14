@@ -17,15 +17,15 @@ public class Servidor {
         Socket conexao = servidor.accept();
         logger.info("Conexão aceita com sucesso!");
 
-        logger.info("Criando o fluxo de entrada");
-        ObjectInputStream entrada =
-                new ObjectInputStream(conexao.getInputStream());
-        logger.info("Fluxo de entrada criado com sucesso!");
-
         logger.info("Criando o fluxo de saída");
         ObjectOutputStream saida =
                 new ObjectOutputStream(conexao.getOutputStream());
         logger.info("Fluxo de saída criado com sucesso!");
+
+        logger.info("Criando o fluxo de entrada");
+        ObjectInputStream entrada =
+                new ObjectInputStream(conexao.getInputStream());
+        logger.info("Fluxo de entrada criado com sucesso!");
 
         logger.info("Recebendo uma requisição!");
         String requisicao = (String) entrada.readObject();

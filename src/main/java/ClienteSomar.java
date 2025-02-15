@@ -4,8 +4,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-class ClienteSomar {
-
+public class ClienteSomar {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         double a = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de A: "));
         double b = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor de B: "));
@@ -22,9 +21,18 @@ class ClienteSomar {
 
         conexao.close();
 
-        String [] parametros = resposta.split(";");
-        if (parametros[0].equals("200")) {
+        String[] parametros = resposta.split(";");
+        if(parametros[0].equals("200")){
             JOptionPane.showMessageDialog(null, "Resultado: " + parametros[1]);
         }
+        else{
+            JOptionPane.showMessageDialog(
+                    null,
+                    parametros[1],
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }
+
 }
